@@ -1,4 +1,6 @@
--- 1.	Create a report that shows the CategoryName and Description from the categories table sorted by CategoryName.
-SELECT CategoryName, Description
-FROM dbo.Categories
-ORDER BY CategoryName
+--Find all suppliers who provide products in the ‘Seafood’ category
+SELECT Suppliers.supplier_id, Suppliers.company_name
+FROM Suppliers
+JOIN Products ON Suppliers.supplier_id = Products.supplier_id
+JOIN Categories ON Products.category_id = Categories.category_id
+WHERE Categories.category_name = 'Seafood';
