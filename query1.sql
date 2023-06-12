@@ -1,7 +1,7 @@
--- Retrieves the top 3 customers by total order quantity
-SELECT c.customer_name, SUM(o.quantity) AS total_order_quantity
-FROM customers c
-JOIN orders o ON c.customer_id = o.customer_id
-GROUP BY c.customer_name
-ORDER BY total_order_quantity DESC
-LIMIT 3;
+--Get the total number of orders placed by each customer
+SELECT Customers.customer_id, Customers.company_name, COUNT(Orders.order_id) AS TotalOrders
+FROM Customers
+JOIN Orders ON Customers.customer_id = Orders.customer_id
+GROUP BY Customers.customer_id, Customers.company_name
+ORDER BY TotalOrders DESC;
+
